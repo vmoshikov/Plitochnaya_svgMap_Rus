@@ -43,7 +43,7 @@
   width: 100%;
   padding-top: 50%;
   overflow: hidden;
-  background: #d9ecff;
+  background: transparent;
   color: #111;
 }
 .svgMap-map-wrapper * {
@@ -155,8 +155,6 @@
   box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
 }
 .svgMap-map-wrapper .svgMap-country {
-  stroke: #fff;
-  stroke-width: 1;
   stroke-linejoin: round;
   vector-effect: non-scaling-stroke;
   transition: fill 250ms, stroke 250ms;
@@ -165,27 +163,29 @@
   cursor: pointer;
 }
 @media (hover: hover) {
-  .svgMap-map-wrapper .svgMap-country:hover {
-    stroke: #333;
-    stroke-width: 1.5;
+  .svgMap-map-wrapper .svgMap-country:hover and .svgMap-tooltip.svgMap-active {
+    fill: #EEF0FC;
+    /*stroke: #B80F22;*/
+    /*stroke-width: 1.5;*/
+    cursor: pointer;
   }
 }
 .svgMap-map-wrapper .svgMap-country.svgMap-active {
-  stroke: #333;
+  stroke: #B80F22;
   stroke-width: 1.5;
 }
 
 .svgMap-tooltip {
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  padding: 12px;
+  box-shadow: 0 0 3px rgba(256, 256, 256, 0.5);
   position: absolute;
   z-index: 2;
-  border-radius: 2px;
-  background: #fff;
+  background: #EEF0FC;
   transform: translate(-50%, -100%);
-  border-bottom: 1px solid #000;
   display: none;
   pointer-events: none;
-  min-width: 60px;
+  border-radius: 5px;
+  color: #B80F22;
 }
 .svgMap-tooltip.svgMap-tooltip-flipped {
   transform: translate(-50%, 0);
@@ -197,39 +197,25 @@
 }
 .svgMap-tooltip .svgMap-tooltip-content-container {
   position: relative;
-  padding: 10px 20px;
+  padding: 0 8px
 }
 .svgMap-tooltip .svgMap-tooltip-content-container .svgMap-tooltip-flag-container {
   text-align: center;
-  margin: 2px 0 5px;
-}
-.svgMap-tooltip .svgMap-tooltip-content-container .svgMap-tooltip-flag-container.svgMap-tooltip-flag-container-emoji {
-  font-size: 50px;
-  line-height: 0;
-  padding: 25px 0 15px;
-}
-.svgMap-tooltip .svgMap-tooltip-content-container .svgMap-tooltip-flag-container .svgMap-tooltip-flag {
-  display: block;
-  margin: auto;
-  width: auto;
-  height: 32px;
-  padding: 2px;
-  background: rgba(0, 0, 0, 0.15);
-  border-radius: 2px;
 }
 .svgMap-tooltip .svgMap-tooltip-title {
-  white-space: nowrap;
+  color: #B80F22;
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 800;
   font-size: 18px;
-  line-height: 28px;
-  padding: 0 0 8px;
+  line-height: 21px;
   text-align: center;
 }
 .svgMap-tooltip .svgMap-tooltip-content {
   white-space: nowrap;
   text-align: center;
   font-size: 14px;
-  color: #777;
-  margin: -5px 0 0;
+  color: #B80F22;
 }
 .svgMap-tooltip .svgMap-tooltip-content table {
   padding: 0;
@@ -237,14 +223,18 @@
   margin: auto;
 }
 .svgMap-tooltip .svgMap-tooltip-content table td {
-  padding: 2px 0;
   text-align: left;
 }
 .svgMap-tooltip .svgMap-tooltip-content table td span {
-  color: #111;
+  color: #B80F22;
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 10px;
+  line-height: 12px;
+  text-align: center;
 }
 .svgMap-tooltip .svgMap-tooltip-content table td:first-child {
-  padding-right: 10px;
   text-align: right;
 }
 .svgMap-tooltip .svgMap-tooltip-content table td sup {
@@ -253,9 +243,13 @@
   top: -5px;
 }
 .svgMap-tooltip .svgMap-tooltip-content .svgMap-tooltip-no-data {
-  padding: 2px 0;
-  color: #777;
-  font-style: italic;
+  color: #B80F22;
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: center;
 }
 .svgMap-tooltip .svgMap-tooltip-pointer {
   position: absolute;
@@ -268,10 +262,9 @@
 }
 .svgMap-tooltip .svgMap-tooltip-pointer:after {
   content: "";
+  background: #EEF0FC;
   width: 20px;
   height: 20px;
-  background: #fff;
-  border: 1px solid #000;
   position: absolute;
   bottom: 6px;
   left: 50%;

@@ -56,12 +56,12 @@ function svgMapWrapper(svgPanZoom) {
 
       // Decide whether to show the flag option or not
       hideFlag: false,
-      
+
       // Whether attributes with no data should be displayed
       hideMissingData: false,
 
       // The default text to be shown when no data is present
-      noDataText: 'No data available',
+      noDataText: 'Нет данных',
 
       // Set to true to open the link on mobile devices, set to false (default) to show the tooltip
       touchLink: false,
@@ -854,13 +854,6 @@ function svgMapWrapper(svgPanZoom) {
     }
     delete mapPaths['MA-EH'];
 
-    if (this.options.countries.Crimea === 'RU') {
-      mapPaths.RU.d = mapPaths['RU-WITH-CRIMEA'].d;
-      mapPaths.UA.d = mapPaths['UA-WITHOUT-CRIMEA'].d;
-    }
-    delete mapPaths['RU-WITH-CRIMEA'];
-    delete mapPaths['UA-WITHOUT-CRIMEA'];
-
     // Expose tooltipMove function
 
     this.tooltipMoveEvent = function (e) {
@@ -1208,7 +1201,7 @@ function svgMapWrapper(svgPanZoom) {
   // Zoom to Contient
 
   svgMap.prototype.zoomContinent = function (contientIso) {
-    
+
     const continent = this.continents[contientIso];
     if (continent.iso == "EA") this.mapPanZoom.reset()
     else if (continent.pan) {
